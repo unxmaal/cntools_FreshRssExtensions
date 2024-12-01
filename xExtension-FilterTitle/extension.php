@@ -22,9 +22,10 @@ class FilterTitleExtension extends Minz_Extension {
             $this->setSystemConfiguration($configuration);
 
             // Debugging to verify the values
-            Minz_Log::debug('FilterTitleExtension: Configuration saved', $configuration);
+            Minz_Log::debug('FilterTitleExtension: Configuration saved: ' . json_encode($configuration));
         }
     }
+
 
     public function filterTitle($entry) {
         if (!is_object($entry)) {
