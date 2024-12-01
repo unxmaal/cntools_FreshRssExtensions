@@ -10,16 +10,19 @@ class FilterTitleExtension extends Minz_Extension {
         $this->registerTranslates();
 
         if (Minz_Request::isPost()) {
-            $blacklist = array_filter(Minz_Request::paramTextToArray('blacklist', []), [$this, 'isValidRegex']);
-            $whitelist = array_filter(Minz_Request::paramTextToArray('whitelist', []), [$this, 'isValidRegex']);
+            $blacklist = array_filter(Minz_Request::paramTextToArray('blacklist', []));
+            $whitelist = array_filter(Minz_Request::paramTextToArray('whitelist', []));
 
             $configuration = [
                 'blacklist' => $blacklist,
-                'mark_as_read' => Minz_Request::paramString('mark_as_read'),
+                'mark_as_read' => Minz_Request::paramString('mark_as_read') === '1' ? '1' : '0',
                 'whitelist' => $whitelist,
             ];
 
             $this->setSystemConfiguration($configuration);
+
+            // Debugging to verify the values
+            Minz_Log::debug('FilterTitleExtension: Configuration saved', $configuration);
         }
     }
 
