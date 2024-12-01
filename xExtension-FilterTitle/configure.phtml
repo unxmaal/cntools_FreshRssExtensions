@@ -14,25 +14,51 @@
     <div class="form-group">
         <label class="group-name" for="blacklist"><?php echo _t('ext.filter_title.blacklist'); ?></label>
         <div class="group-controls">
-            <textarea name="blacklist" id="blacklist"><?php echo $this->getBlacklistData(); ?></textarea>
-            <br /><span><?php echo _t('ext.filter_title.priority_hint'); ?></span>
+            <textarea
+                name="blacklist"
+                id="blacklist"
+                rows="6"
+                cols="50"
+                placeholder="<?php echo _t('ext.filter_title.blacklist_placeholder'); ?>"
+            ><?php echo htmlspecialchars($this->getBlacklistData(), ENT_QUOTES, 'UTF-8'); ?></textarea>
+            <br />
+            <span><?php echo _t('ext.filter_title.priority_hint'); ?></span>
         </div>
     </div>
 
     <div class="form-group">
         <label class="group-name" for="whitelist"><?php echo _t('ext.filter_title.whitelist'); ?></label>
         <div class="group-controls">
-            <textarea name="whitelist" id="whitelist"><?php echo $this->getWhitelistData(); ?></textarea>
+            <textarea
+                name="whitelist"
+                id="whitelist"
+                rows="6"
+                cols="50"
+                placeholder="<?php echo _t('ext.filter_title.whitelist_placeholder'); ?>"
+            ><?php echo htmlspecialchars($this->getWhitelistData(), ENT_QUOTES, 'UTF-8'); ?></textarea>
         </div>
     </div>
 
-	<div class="form-group">
-		<label class="group-name" for="mark_as_read"><?= _t('ext.filter_title.mark_as_read') ?></label>
-		<div class="group-controls">
-			<input type="checkbox" name="mark_as_read" id="mark_as_read" value="1" <?= $this->getSystemConfigurationValue('mark_as_read') ? 'checked' : '' ?>>
-            <br /><span><?= _t('ext.filter_title.mark_as_read_hint') ?></span>
-		</div>
-	</div>
+    <div class="form-group">
+        <label class="group-name" for="mark_as_read"><?php echo _t('ext.filter_title.mark_as_read'); ?></label>
+        <div class="group-controls">
+            <input
+                type="checkbox"
+                name="mark_as_read"
+                id="mark_as_read"
+                value="1"
+                <?php echo $this->getSystemConfigurationValue('mark_as_read') ? 'checked' : ''; ?>
+            />
+            <br />
+            <span><?php echo _t('ext.filter_title.mark_as_read_hint'); ?></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="group-controls">
+            <p><?php echo _t('ext.filter_title.regex_hint'); ?></p>
+        </div>
+    </div>
 
     <div class="form-group form-actions">
         <div class="group-controls">
